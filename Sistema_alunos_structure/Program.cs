@@ -1,81 +1,126 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-struct Aluno
+struct Livro
 {
-	public string Nome;
-	public int Idade;
-	public float Nota;
+    public string Titulo;
+    public string Autor;
+    public int AnoPublicacao;
 }
 
 class Program
 {
-	static List<Aluno> listaAlunos = new List<Aluno>();
+    static List<Livro> biblioteca = new List<Livro>();
 
-	static void AdicionarAluno()
-	{
-		Aluno novoAluno;
-		Console.Write("Nome: ");
-		novoAluno.Nome = Console.ReadLine();
+    static void AdicionarLivro()
+    {
+        Livro novoLivro;
+        Console.Write("Titulo: ");
+        novoLivro.Titulo = Console.ReadLine();
+        Console.Write("Autor: ");
+        novoLivro.Autor = Console.ReadLine();
+        Console.Write("Ano de publicação: ");
+        if (!int.TryParse(Console.ReadLine(), out novoLivro.AnoPublicacao))
+        {
+            Console.WriteLine("Ano inválido. O livro não foi adicionado.");
+            return;
+        }
 
-		Console.Write("Idade: ");
-		while (!int.TryParse(Console.ReadLine(), out novoAluno.Idade))
-		{
-			Console.Write("Idade inválida. Digite novamente: ");
-		}
+        biblioteca.Add(novoLivro);
+        Console.WriteLine("Livro adicionado com sucesso!\n");
+    }
 
-		Console.Write("Nota: ");
-		while (!float.TryParse(Console.ReadLine(), out novoAluno.Nota))
-		{
-			Console.Write("Nota inválida. Digite novamente: ");
-		}
+    static void ListarLivros()
+    {
+        Console.WriteLine("\nLista de Livros:");
+        for (int i = 0; i < biblioteca.Count; i++)
+        {
+            Console.WriteLine($"{i + 1} - Titulo: {biblioteca[i].Titulo}, Autor: {biblioteca[i].Autor}, Ano: {biblioteca[i].AnoPublicacao}");
+        }
+        Console.WriteLine();
+    }
 
-		listaAlunos.Add(novoAluno);
-		Console.WriteLine("Aluno adicionado com sucesso!\n");
-	}
+    static void BuscarLivro()
+    {
+        Console.Write("Digite o título do livro para buscar: ");
+        string busca = Console.ReadLine().ToLower();
 
-	static void ListarAlunos()
-	{
-		if (listaAlunos.Count == 0)
-		{
-			Console.WriteLine("Nenhum aluno cadastrado.\n");
-			return;
-		}
+        foreach (var livro in biblioteca)
+        {
+            if (livro.Titulo.ToLower().Contains(busca))
+            {
+                Console.WriteLine($"Título: {livro.Titulo}, Autor: {livro.Autor}, Ano: {livro.AnoPublicacao}");
+                return;
+            }
+        }
+        Console.WriteLine("Livro não encontrado. \n");
+    }
 
-		Console.WriteLine("Lista de Alunos:");
-		foreach (var aluno in listaAlunos)
-		{
-			Console.WriteLine($"Nome: {aluno.Nome}, Idade: {aluno.Idade}, Nota: {aluno.Nota:F2}");
-		}
-		Console.WriteLine();
-	}
+    static void EditarLivro()
+    {
+        Console.Write("Digite o título do livro que deseja editar: ");
+        string busca = Console.ReadLine().ToLower();
 
-	static void Main()
-	{
-		while (true)
-		{
-			Console.WriteLine("1 - Adicionar Aluno");
-			Console.WriteLine("2 - Listar Alunos");
-			Console.WriteLine("3 - Sair");
-			Console.Write("Escolha uma opção: ");
+        for (int i = 0; i < biblioteca.Count; i++)
+        {
+            if (biblioteca[i].Titulo.ToLower().Contains(busca))
+            {
+                Console.Write("Novo título (ou pressione Enter para manter o mesmo): ");
+                string novoTitulo = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(novoTitulo))
+                {
+                    biblioteca[i] = new Livro { Titulo = novoTitulo, Autor = biblioteca[i].Autor, AnoPublicacao = biblioteca[i].AnoPublicacao };
+                }
 
-			string opcao = Console.ReadLine();
-			Console.WriteLine();
+                Console.Write("Novo autor (ou pressione Enter para manter o mesmo): ");
+                string novoAutor = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(novoAutor))
+                {
+                    biblioteca[i] = new Livro { Titulo = biblioteca[i].Titulo, Autor = novoAutor, AnoPublicacao = biblioteca[i].AnoPublicacao };
+                }
 
-			switch (opcao)
-			{
-				case "1":
-					AdicionarAluno();
-					break;
-				case "2":
-					ListarAlunos();
-					break;
-				case "3":
-					return;
-				default:
-					Console.WriteLine("Opção inválida. Tente novamente.\n");
-					break;
-			}
-		}
-	}
+                Console.Write("Novo ano de publicação (ou pressione Enter para manter o mesmo): ");
+                string novoAno = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(novoAno) && int.TryParse(novoAno, out int anoPublicacao))
+                {
+                    biblioteca[i] = new Livro { Titulo = biblioteca[i].Titulo, Autor = biblioteca[i].Autor, AnoPublicacao = anoPublicacao };
+                }
+
+                Console.WriteLine("Livro editado com sucesso!\n");
+                return;
+            }
+        }
+        Console.WriteLine("Livro não encontrado para edição.\n");
+    }
+
+    static void Main()
+    {
+        int opcao;
+        do
+        {
+            Console.WriteLine("1 - Adicionar livro");
+            Console.WriteLine("2 - Listar livros");
+            Console.WriteLine("3 - Buscar livro");
+            Console.WriteLine("4 - Editar livro");
+            Console.WriteLine("5 - Sair");
+            Console.Write("Escolha uma opção: ");
+
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+            {
+                Console.WriteLine("Opção inválida!");
+                continue;
+            }
+
+            switch (opcao)
+            {
+                case 1: AdicionarLivro(); break;
+                case 2: ListarLivros(); break;
+                case 3: BuscarLivro(); break;
+                case 4: EditarLivro(); break;
+                case 5: Console.WriteLine("Encerrando..."); break;
+                default: Console.WriteLine("Opção inválida!"); break;
+            }
+
+        } while (opcao != 5);
+    }
 }
