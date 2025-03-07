@@ -1,0 +1,14 @@
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\obj\Debug\net8.0\Projeto_IA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\obj\Debug\net8.0\Projeto_IA.AssemblyInfoInputs.cache
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\obj\Debug\net8.0\Projeto_IA.AssemblyInfo.cs
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\obj\Debug\net8.0\Projeto_IA.csproj.CoreCompileInputs.cache
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\bin\Debug\net8.0\Projeto_IA.exe
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\bin\Debug\net8.0\Projeto_IA.deps.json
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\bin\Debug\net8.0\Projeto_IA.runtimeconfig.json
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\bin\Debug\net8.0\Projeto_IA.dll
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\bin\Debug\net8.0\Projeto_IA.pdb
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\obj\Debug\net8.0\Projeto_IA.dll
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\obj\Debug\net8.0\refint\Projeto_IA.dll
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\obj\Debug\net8.0\Projeto_IA.pdb
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\obj\Debug\net8.0\Projeto_IA.genruntimeconfig.cache
+C:\Users\Nicolas Santos\OneDrive\Desktop\C#\Projeto_IA\Projeto_IA\obj\Debug\net8.0\ref\Projeto_IA.dll
